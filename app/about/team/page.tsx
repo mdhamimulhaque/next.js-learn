@@ -4,7 +4,8 @@ import { User } from '@/app/interface/user';
 import React from 'react'
 
 const Team = async () => {
-    const users: User[] = await fetchUserData();
+    const usersData: Promise<User[]> = await fetchUserData();
+    const users = await usersData;
     return (
         <div className='team_wrapper'>
             {users.map(user => <div className='team_card' key={user.id}>
