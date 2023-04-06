@@ -6,7 +6,6 @@
 
 html,
 body {
-  max-width: 100vw;
   overflow-x: hidden;
 }
 
@@ -36,10 +35,29 @@ ul {
 }
 
 .aboutLayout {
+  display: flex;
+}
+
+.sidebar {
   background-color: darkslategrey;
   color: #fff;
-  position: fixed;
-  width: 310px;
-  left: 0;
   height: 100vh;
+  padding: 20px;
+}
+
+.team_wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.team {
+  color: #000;
+}
+
+.team_card {
+  background-color: darksalmon;
+  padding: 40px;
+  margin: 20px;
 }
