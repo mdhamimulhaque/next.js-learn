@@ -1,6 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const Team = () => {
+export const metadata = {
+    title: 'About page',
+    description: 'learning next.js at the very first time',
+}
+
+const About = () => {
     return (
         <div>
             about
@@ -8,4 +13,4 @@ const Team = () => {
     )
 }
 
-export default Team
+export default About
