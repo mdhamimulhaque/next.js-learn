@@ -26,6 +26,11 @@ li {
   font-size: 28px;
 }
 
+.loading {
+  font-size: 30px;
+  color: red
+}
+
 ul {
   display: flex;
   justify-content: center;

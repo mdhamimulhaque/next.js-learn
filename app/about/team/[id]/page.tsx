@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Comments from '@/app/components/comments/comments';
 import { fetchPostComments, fetchUserPosts } from '@/app/fetchApi/userApi';
 import { commentsType } from '@/app/interface/comments';
@@ -22,7 +23,9 @@ const TeamMemberPosts = async ({ params: { id } }: UserID) => {
                 <h2 style={{ color: "yellow" }}>Title : {post?.title}</h2>
                 <p>{post?.body}</p>
             </div>
-            <Comments comments={comments} />
+            <Suspense fallback={<div className='loading'>Loading...</div>}>
+                <Comments comments={comments} />
+            </Suspense>
         </div>
     );
 };

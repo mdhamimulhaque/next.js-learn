@@ -13,7 +13,7 @@ export const fetchUserPosts = async (uid: string) => {
 }
 export const fetchPostComments = async (uid: string) => {
     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${uid}/comments`)
-    await new Promise((resolved) => setTimeout(resolved, 1000))
+    await new Promise((resolved) => setTimeout(resolved, 3000))
     const data = await res.json()
     return data;
 }
