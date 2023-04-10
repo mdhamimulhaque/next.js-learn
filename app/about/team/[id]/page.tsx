@@ -13,10 +13,9 @@ type UserID = {
 
 const TeamMemberPosts = async ({ params: { id } }: UserID) => {
     const postsData: Promise<post> = await fetchUserPosts(id);
-    const post = await postsData;
-
     const commentsData: Promise<commentsType[]> = await fetchPostComments(id);
-    const comments = await commentsData;
+
+    const [post, comments] = await Promise.all([postsData, commentsData])
     return (
         <div style={{ background: "gray", padding: "20px", textAlign: "center" }}>
             <div>
