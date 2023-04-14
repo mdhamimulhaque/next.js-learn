@@ -5,6 +5,7 @@ import { commentsType } from '@/app/interface/comments';
 import { post } from '@/app/interface/post';
 import React from 'react';
 import { User } from '@/app/interface/user';
+import { notFound } from 'next/navigation';
 
 type UserID = {
     params: {
@@ -17,6 +18,11 @@ const TeamMemberPosts = async ({ params: { id } }: UserID) => {
     const commentsData: Promise<commentsType[]> = await fetchPostComments(id);
 
     const [post, comments] = await Promise.all([postsData, commentsData])
+
+    if (!post?.title) {
+        return notFound()
+    }
+
     return (
         <div style={{ background: "gray", padding: "20px", textAlign: "center" }}>
             <div>
