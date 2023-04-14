@@ -1,9 +1,10 @@
 import { Suspense } from 'react';
 import Comments from '@/app/components/comments/comments';
-import { fetchPostComments, fetchUserPosts } from '@/app/fetchApi/userApi';
+import { fetchPostComments, fetchUserData, fetchUserPosts } from '@/app/fetchApi/userApi';
 import { commentsType } from '@/app/interface/comments';
 import { post } from '@/app/interface/post';
 import React from 'react';
+import { User } from '@/app/interface/user';
 
 type UserID = {
     params: {
@@ -30,3 +31,12 @@ const TeamMemberPosts = async ({ params: { id } }: UserID) => {
 };
 
 export default TeamMemberPosts;
+
+export async function generateStaticParams() {
+    const usersData: Promise<User[]> = await fetchUserData();
+    const users = await usersData;
+
+    return users.map(user => ({
+        id: user.id.toString()
+    }))
+}
